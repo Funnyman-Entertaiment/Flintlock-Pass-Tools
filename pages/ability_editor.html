@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flintlock Pass Tools</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../scripts/ability_editor.js"></script>
+</head>
+
+<body>
+    <h1>AbilityEditor</h1>
+
+    <input id="ability_file" type="file" accept="json"/>
+    <button id="ability_file_load">Load</button>
+    <button id="ability_file_save">Save</button>
+
+    <br>
+
+    <div>
+
+        <!--GENERAL INFO-->
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="ability_id">ID:</label>
+                        </td>
+                        <td>
+                            <input id="ability_id" type="text" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="ability_name">Name:</label>
+                        </td>
+                        <td>
+                            <input id="ability_name" type="text" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="ability_description">Description:</label>
+                        </td>
+                        <td>
+                            <input id="ability_description" type="text" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <label>Quotes:</label>
+
+                            <ul id="ability_quotes">
+                            </ul>
+
+                            <input id="ability_quote" type="text" />
+                            <button id="ability_add_quote">Add quote</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="ability_character">Character:</label>
+                        </td>
+                        <td>
+                            <input id="ability_character" type="text" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="ability_ap">Action Points:</label>
+                        </td>
+                        <td>
+                            <input id="ability_ap" type="number" min="0" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="ability_effects">
+            <label>Ability behaviours:</label>
+
+            <button id="add_ability_effect">Add behaviour</button>
+        </div>
+    </div>
+
+    <br>
+
+    <a href="../index.html"><button>Back</button></a>
+</body>
+
+</html>

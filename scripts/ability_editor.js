@@ -287,7 +287,7 @@ function OnClickAddEffect(button, effect) {
     const amountSpecialCritRow = $("<tr></tr>");
 
     const amountSpecialCritLabelData = $("<td></td>");
-    const amountSpecialCritLabel = $("<label></label>").text("Special:");
+    const amountSpecialCritLabel = $("<label></label>").text("Special Crit:");
     amountSpecialCritLabelData.append(amountSpecialCritLabel);
 
     const amountSpecialCritInputData = $("<td></td>");

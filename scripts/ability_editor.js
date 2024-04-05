@@ -164,10 +164,12 @@ function GetEffect(container) {
     const amountMin = amountRows[0].children[1].children[0].value;
     const amountMax = amountRows[1].children[1].children[0].value;
     const amountSpecial = amountRows[2].children[1].children[0].value;
+    const amountSpecialCrit = amountRows[3].children[1].children[0].value;
     const amount = {
         min: parseInt(amountMin),
         max: parseInt(amountMax),
-        special: amountSpecial
+        special: amountSpecial,
+        critSpecial: amountSpecialCrit
     }
 
     const effectAccuracy = parseInt(mainRows[2].children[1].children[0].value);
@@ -281,7 +283,21 @@ function OnClickAddEffect(button, effect) {
 
     amountSpecialRow.append(amountSpecialLabelData, amountSpecialInputData);
 
-    amountTableBody.append(amountMinRow, amountMaxRow, amountSpecialRow);
+    //Row for special crit
+    const amountSpecialCritRow = $("<tr></tr>");
+
+    const amountSpecialCritLabelData = $("<td></td>");
+    const amountSpecialCritLabel = $("<label></label>").text("Special:");
+    amountSpecialCritLabelData.append(amountSpecialCritLabel);
+
+    const amountSpecialCritInputData = $("<td></td>");
+    const amountSpecialCritInput = $("<input></input>");
+    amountSpecialCritInput.attr("type", "text");
+    amountSpecialCritInputData.append(amountSpecialCritInput);
+
+    amountSpecialCritRow.append(amountSpecialCritLabelData, amountSpecialCritInputData);
+
+    amountTableBody.append(amountMinRow, amountMaxRow, amountSpecialRow, amountSpecialCritRow);
     amountFormTable.append(amountTableBody);
     effectAmountData.append(effectAmountLabel, amountFormTable);
     effectAmountRow.append(effectAmountData);
@@ -365,6 +381,7 @@ function OnClickAddEffect(button, effect) {
         amountMinInput.val(effect.amount.min);
         amountMaxInput.val(effect.amount.max);
         amountSpecialInput.val(effect.amount.special);
+        amountSpecialCritInput.val(effect.amount.critSpecial);
 
         effectIdInput.val(effect.id);
         const acc = effect.accuracy ?? 100;

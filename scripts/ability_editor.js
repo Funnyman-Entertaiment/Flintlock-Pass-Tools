@@ -33,7 +33,8 @@ const EFFECT_TYPES = [
     "Damage",
     "Buff",
     "Action_Points",
-    "Heal"
+    "Heal",
+    "Log"
 ]
 
 

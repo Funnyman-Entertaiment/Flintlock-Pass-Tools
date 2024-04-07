@@ -11,7 +11,9 @@ const ABILITY_SCHEMA = {
         "name",
         "description",
         "character",
-        "actionPoints"
+        "actionPoints",
+        "quotes",
+        "behaviour"
     ],
     "properties": {
         "id": {
@@ -34,17 +36,37 @@ const ABILITY_SCHEMA = {
             "type": "array",
             "items": {
                 "type": "string"
-            }
+            },
+            "default": []
         },
         "actionPoints": {
             "$comment": "Number of Action Points the ability requires.",
             "type": "integer"
         },
+        "conditions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "enum": [
+                            "Self",
+                            "Allies",
+                            "Enemies"
+                        ]
+                    },
+                    "comparison": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "behaviour": {
             "type": "array",
             "items": {
                 "$ref": ".ability_behaviour_schema.json"
-            }
+            },
+            "default": []
         }
     }
 };

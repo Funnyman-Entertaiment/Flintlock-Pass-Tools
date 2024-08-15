@@ -38,7 +38,9 @@ const BUFF_SCHEMA = {
                     "$comment": "Stat to change",
                     "enum": [
                         "Crit_Chance",
-                        "Max_AP"
+                        "Max_AP",
+                        "Max_HP",
+                        "Accuracy"
                     ]
                 },
                 "calculation": {

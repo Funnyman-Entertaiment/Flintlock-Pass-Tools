@@ -1,28 +1,51 @@
-const FILE_INPUT = "#character_file";
-const FILE_LOAD_BUTTON = "#character_file_load";
-const FILE_SAVE_BUTTON = "#character_file_save";
+const FILE_INPUT = "#buff_file";
+const FILE_LOAD_BUTTON = "#buff_file_load";
+const FILE_SAVE_BUTTON = "#buff_file_save";
 
 const FORM_HOLDER = "form_holder";
 
-const CHARACTER_SCHEMA = {
+const BUFF_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "id": {
-            "$comment": "Internal ID used to refer to this character.",
+            "$comment": "Used internally to refer to this buff",
             "type": "string"
         },
         "name": {
-            "$comment": "Display name of the character.",
+            "$comment": "Display name",
             "type": "string"
         },
-        "sprite": {
+        "description": {
+            "$comment": "Display description",
             "type": "string"
         },
-        "hitPoints": {
+        "decrementType": {
+            "$comment": "When to decrement the counter for this buff",
+            "enum": [
+                "Used",
+                "End_Turn"
+            ]
+        },
+        "decrementAmount": {
+            "$comment": "How much to decrement the counter. -1 to completely remove.",
             "type": "integer"
         },
-        "actionPoints": {
-            "type": "integer"
+        "statChange": {
+            "$comment": "If the buff changes a stat, it does it here.",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "$comment": "Stat to change",
+                    "enum": [
+                        "Crit_Chance",
+                        "Max_AP"
+                    ]
+                },
+                "calculation": {
+                    "$comment": "Calculation to perform on the stat",
+                    "type": "string"
+                }
+            }
         }
     }
 };
@@ -37,19 +60,19 @@ async function OnClickFileLoad() {
     }
 
     const content = await file.text();
-    const character = JSON.parse(content);
+    const buff = JSON.parse(content);
 
-    editor.setValue(character);
+    editor.setValue(buff);
 }
 
 function OnClickFileSave() {
     const file = $(FILE_INPUT)[0].files[0];
 
-    const character = editor.getValue();
+    const buff = editor.getValue();
 
-    const serialized = JSON.stringify(character);
+    const serialized = JSON.stringify(buff);
 
-    const fileName = file?.name ?? "new_character.json";
+    const fileName = file?.name ?? "new_buff.json";
     const myFile = new Blob([serialized], { type: 'application/json' });
 
     window.URL = window.URL || window.webkitURL;
@@ -73,7 +96,7 @@ $(() => {
     const formHolder = document.getElementById(FORM_HOLDER);
 
     editor = new JSONEditor(formHolder, {
-        schema: CHARACTER_SCHEMA,
+        schema: BUFF_SCHEMA,
         theme: "spectre",
         iconlib: "spectre",
         disable_edit_json: true,

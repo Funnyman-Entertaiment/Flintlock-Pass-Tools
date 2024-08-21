@@ -40,7 +40,8 @@ const BUFF_SCHEMA = {
                         "Crit_Chance",
                         "Max_AP",
                         "Max_HP",
-                        "Accuracy"
+                        "Accuracy",
+                        "Damage"
                     ]
                 },
                 "calculation": {
@@ -48,8 +49,140 @@ const BUFF_SCHEMA = {
                     "type": "string"
                 }
             }
+        },
+        "triggers": {
+            "$comment": "If the buff does something in response to an event, it does it here.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "trigger": {
+                        "$comment": "The type of trigger",
+                        "enum": [
+                            "Turn_End"
+                        ]
+                    },
+                    "behaviours": {
+                        "$comment": "What effects will occur"
+                    }
+                }
+            }
         }
     }
+};
+const BEHAVIOUR_SCHEMA = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "targetting": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "Enemy",
+                        "Ally",
+                        "Anyone",
+                        "Ally_No_Self",
+                        "Anyone_No_Self",
+                        "Self",
+                        "All_Enemies",
+                        "All_Allies",
+                        "All",
+                        "All_Allies_No_Self",
+                        "All_No_Self",
+                        "Random_Ally"
+                    ]
+                },
+                "amount": {
+                    "type": "integer"
+                }
+            }
+        },
+        "effects": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "Damage",
+                            "Buff",
+                            "Action_Points",
+                            "Heal",
+                            "Log"
+                        ]
+                    },
+                    "amount": {
+                        "type": "object",
+                        "properties": {
+                            "min": {
+                                "type": "integer"
+                            },
+                            "max": {
+                                "type": "integer"
+                            },
+                            "special": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "accuracy": {
+                        "type": "integer"
+                    },
+                    "quotes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "onHit": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#"
+                        }
+                    },
+                    "onMiss": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#"
+                        }
+                    },
+                    "onCrit": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#"
+                        }
+                    },
+                    "onKill": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#"
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+const BEHAVIOUR_REF = "#/definitions/behaviour"
+
+BUFF_SCHEMA.type = "object";
+BEHAVIOUR_SCHEMA.type = "object";
+
+BUFF_SCHEMA.properties.triggers.items.properties.behaviours.$ref = BEHAVIOUR_REF;
+BEHAVIOUR_SCHEMA.properties.effects.items.properties.onHit.items.$ref = BEHAVIOUR_REF;
+BEHAVIOUR_SCHEMA.properties.effects.items.properties.onMiss.items.$ref = BEHAVIOUR_REF;
+BEHAVIOUR_SCHEMA.properties.effects.items.properties.onKill.items.$ref = BEHAVIOUR_REF;
+BEHAVIOUR_SCHEMA.properties.effects.items.properties.onCrit.items.$ref = BEHAVIOUR_REF;
+
+delete BUFF_SCHEMA.$schema
+delete BEHAVIOUR_SCHEMA.$schema
+
+BUFF_SCHEMA.definitions = {
+    "behaviour": BEHAVIOUR_SCHEMA
 };
 
 let editor;

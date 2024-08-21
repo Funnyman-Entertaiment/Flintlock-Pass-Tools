@@ -4,7 +4,7 @@ const FILE_SAVE_BUTTON = "#ability_file_save";
 
 const FORM_HOLDER = "form_holder";
 
-const CHARACTER_SCHEMA = {
+const ABILITY_SCHEMA = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "required": [
         "id",
@@ -169,19 +169,19 @@ const BEHAVIOUR_SCHEMA = {
 
 const BEHAVIOUR_REF = "#/definitions/behaviour"
 
-CHARACTER_SCHEMA.type = "object";
+ABILITY_SCHEMA.type = "object";
 BEHAVIOUR_SCHEMA.type = "object";
 
-CHARACTER_SCHEMA.properties.behaviour.items.$ref = BEHAVIOUR_REF;
+ABILITY_SCHEMA.properties.behaviour.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onHit.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onMiss.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onKill.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onCrit.items.$ref = BEHAVIOUR_REF;
 
-delete CHARACTER_SCHEMA.$schema
+delete ABILITY_SCHEMA.$schema
 delete BEHAVIOUR_SCHEMA.$schema
 
-CHARACTER_SCHEMA.definitions = {
+ABILITY_SCHEMA.definitions = {
     "behaviour": BEHAVIOUR_SCHEMA
 };
 
@@ -231,7 +231,7 @@ $(() => {
     const formHolder = document.getElementById(FORM_HOLDER);
 
     editor = new JSONEditor(formHolder, {
-        schema: CHARACTER_SCHEMA,
+        schema: ABILITY_SCHEMA,
         theme: "spectre",
         iconlib: "spectre",
         disable_edit_json: true,

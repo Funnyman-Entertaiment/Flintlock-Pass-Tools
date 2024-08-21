@@ -49,7 +49,7 @@ function OnClickFileSave() {
 
     const serialized = JSON.stringify(character);
 
-    const fileName = file?.name ?? "new_character.json";
+    const fileName = file?.name ?? `${serialized.id}.json`;
     const myFile = new Blob([serialized], { type: 'application/json' });
 
     window.URL = window.URL || window.webkitURL;

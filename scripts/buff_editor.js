@@ -72,7 +72,10 @@ const BUFF_SCHEMA = {
                     },
                     "behaviours": {
                         "$comment": "What effects will occur",
-                        "type": "array"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#"
+                        }
                     }
                 }
             }

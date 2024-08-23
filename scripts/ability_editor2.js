@@ -207,7 +207,7 @@ function OnClickFileSave() {
 
     const serialized = JSON.stringify(ability);
 
-    const fileName = file?.name ?? `${serialized.id}.json`;
+    const fileName = file?.name ?? `${ability.id}.json`;
     const myFile = new Blob([serialized], { type: 'application/json' });
 
     window.URL = window.URL || window.webkitURL;

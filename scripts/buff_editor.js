@@ -41,7 +41,8 @@ const BUFF_SCHEMA = {
                         "Max_AP",
                         "Max_HP",
                         "Accuracy",
-                        "Damage"
+                        "Damage",
+                        "Target_Weight"
                     ]
                 },
                 "calculation": {
@@ -59,7 +60,14 @@ const BUFF_SCHEMA = {
                     "trigger": {
                         "$comment": "The type of trigger",
                         "enum": [
-                            "Turn_End"
+                            "Turn_Start",
+                            "Ally_Turn_Start",
+                            "Enemy_Turn_Start",
+                            "Self_Turn_Start",
+                            "Turn_End",
+                            "Ally_Turn_End",
+                            "Enemy_Turn_End",
+                            "Self_Turn_End",
                         ]
                     },
                     "behaviours": {
@@ -207,7 +215,7 @@ function OnClickFileSave() {
 
     const serialized = JSON.stringify(buff);
 
-    const fileName = file?.name ?? `${serialized.id}.json`;
+    const fileName = file?.name ?? `${buff.id}.json`;
     const myFile = new Blob([serialized], { type: 'application/json' });
 
     window.URL = window.URL || window.webkitURL;

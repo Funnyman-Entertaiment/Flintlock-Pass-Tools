@@ -71,7 +71,8 @@ const BUFF_SCHEMA = {
                         ]
                     },
                     "behaviours": {
-                        "$comment": "What effects will occur"
+                        "$comment": "What effects will occur",
+                        "type": "array"
                     }
                 }
             }
@@ -180,7 +181,7 @@ const BEHAVIOUR_REF = "#/definitions/behaviour"
 BUFF_SCHEMA.type = "object";
 BEHAVIOUR_SCHEMA.type = "object";
 
-BUFF_SCHEMA.properties.triggers.items.properties.behaviours.$ref = BEHAVIOUR_REF;
+BUFF_SCHEMA.properties.triggers.items.properties.behaviours.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onHit.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onMiss.items.$ref = BEHAVIOUR_REF;
 BEHAVIOUR_SCHEMA.properties.effects.items.properties.onKill.items.$ref = BEHAVIOUR_REF;

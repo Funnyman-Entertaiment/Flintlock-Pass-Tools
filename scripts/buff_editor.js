@@ -42,7 +42,8 @@ const BUFF_SCHEMA = {
                         "Max_HP",
                         "Accuracy",
                         "Damage",
-                        "Target_Weight"
+                        "Target_Weight",
+                        "Disabled"
                     ]
                 },
                 "calculation": {

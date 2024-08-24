@@ -108,7 +108,8 @@ const BEHAVIOUR_SCHEMA = {
                             "Buff",
                             "Action_Points",
                             "Heal",
-                            "Log"
+                            "Log",
+                            "Modify_Buffs"
                         ]
                     },
                     "amount": {

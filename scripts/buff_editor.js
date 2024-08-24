@@ -19,6 +19,10 @@ const BUFF_SCHEMA = {
             "$comment": "Display description",
             "type": "string"
         },
+        "isNegative": {
+            "$comment": "Whether or not the buff is considered negative.",
+            "type": "boolean"
+        },
         "decrementType": {
             "$comment": "When to decrement the counter for this buff",
             "enum": [
@@ -43,7 +47,8 @@ const BUFF_SCHEMA = {
                         "Accuracy",
                         "Damage",
                         "Target_Weight",
-                        "Disabled"
+                        "Disabled",
+                        "Injury_Chance"
                     ]
                 },
                 "calculation": {

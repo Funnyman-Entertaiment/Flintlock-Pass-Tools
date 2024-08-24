@@ -141,6 +141,9 @@ const BEHAVIOUR_SCHEMA = {
                     "id": {
                         "type": "string"
                     },
+                    "ignoreInjuries": {
+                        "type": "boolean"
+                    },
                     "accuracy": {
                         "type": "integer"
                     },

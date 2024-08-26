@@ -141,6 +141,9 @@ const BEHAVIOUR_SCHEMA = {
                             },
                             "special": {
                                 "type": "string"
+                            },
+                            "critSpecial": {
+                                "type": "string"
                             }
                         }
                     },

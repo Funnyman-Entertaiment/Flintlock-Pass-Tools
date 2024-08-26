@@ -171,6 +171,9 @@ const BEHAVIOUR_SCHEMA = {
                     "ignoreInjuries": {
                         "type": "boolean"
                     },
+                    "breakCap": {
+                        "type": "boolean"
+                    },
                     "accuracy": {
                         "type": "integer"
                     },

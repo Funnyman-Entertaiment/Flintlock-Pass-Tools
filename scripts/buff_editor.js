@@ -94,24 +94,42 @@ const BEHAVIOUR_SCHEMA = {
         "targetting": {
             "type": "object",
             "properties": {
-                "type": {
+                "entityType": {
                     "enum": [
                         "Enemy",
                         "Ally",
-                        "Anyone",
-                        "Ally_No_Self",
-                        "Anyone_No_Self",
-                        "Self",
-                        "All_Enemies",
-                        "All_Allies",
+                        "Both"
+                    ]
+                },
+                "chooseMode": {
+                    "enum": [
+                        "Manual",
                         "All",
-                        "All_Allies_No_Self",
-                        "All_No_Self",
-                        "Random_Ally"
+                        "Random"
                     ]
                 },
                 "amount": {
                     "type": "integer"
+                },
+                "targetSelf": {
+                    "enum": [
+                        "No",
+                        "Yes",
+                        "Only"
+                    ]
+                },
+                "targetDead": {
+                    "enum": [
+                        "No",
+                        "Yes",
+                        "Only"
+                    ]
+                },
+                "condition": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
                 }
             }
         },

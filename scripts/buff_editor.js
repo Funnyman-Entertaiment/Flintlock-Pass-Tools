@@ -46,6 +46,7 @@ const BUFF_SCHEMA = {
                         "Max_HP",
                         "Accuracy",
                         "Damage",
+                        "Defence",
                         "Target_Weight",
                         "Disabled",
                         "Injury_Chance"
@@ -145,7 +146,7 @@ const BEHAVIOUR_SCHEMA = {
                             "Action_Points",
                             "Heal",
                             "Log",
-                            "Modify_Buffs"
+                            "Modify_Buffs",
                         ]
                     },
                     "amount": {

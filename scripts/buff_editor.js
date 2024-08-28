@@ -75,6 +75,9 @@ const BUFF_SCHEMA = {
                             "Ally_Turn_End",
                             "Enemy_Turn_End",
                             "Self_Turn_End",
+
+                            "Ability_Finished",
+                            "Self_Ability_Finished"
                         ]
                     },
                     "behaviours": {

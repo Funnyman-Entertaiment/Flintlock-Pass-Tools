@@ -15,6 +15,13 @@ const CHARACTER_SCHEMA = {
             "$comment": "Display name of the character.",
             "type": "string"
         },
+        "type": {
+            "enum": [
+                "Win_Condition",
+                "Healer",
+                "Support"
+            ]
+        },
         "sprite": {
             "type": "string"
         },

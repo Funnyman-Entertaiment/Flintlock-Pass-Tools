@@ -58,6 +58,19 @@ const BUFF_SCHEMA = {
                 }
             }
         },
+        "checkModifier": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "Can_Use_Ability"
+                    ]
+                },
+                "formula": {
+                    "type": "string"
+                }
+            }
+        },
         "triggers": {
             "$comment": "If the buff does something in response to an event, it does it here.",
             "type": "array",

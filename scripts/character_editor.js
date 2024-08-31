@@ -17,7 +17,7 @@ const CHARACTER_SCHEMA = {
         },
         "type": {
             "enum": [
-                "Win_Condition",
+                "WinCondition",
                 "Healer",
                 "Support"
             ]

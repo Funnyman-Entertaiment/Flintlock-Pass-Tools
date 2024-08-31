@@ -27,7 +27,7 @@ const BUFF_SCHEMA = {
             "$comment": "When to decrement the counter for this buff",
             "enum": [
                 "Used",
-                "EndTurn"
+                "End_Turn"
             ]
         },
         "decrementAmount": {
@@ -41,15 +41,15 @@ const BUFF_SCHEMA = {
                 "type": {
                     "$comment": "Stat to change",
                     "enum": [
-                        "CritChance",
+                        "Crit_Chance",
                         "MaxAP",
                         "MaxHP",
                         "Accuracy",
                         "Damage",
                         "Defence",
-                        "TargetWeight",
+                        "Target_Weight",
                         "Disabled",
-                        "InjuryChance"
+                        "Injury_Chance"
                     ]
                 },
                 "calculation": {
@@ -63,7 +63,7 @@ const BUFF_SCHEMA = {
             "properties": {
                 "type": {
                     "enum": [
-                        "CanUseAbility"
+                        "Can_Use_Ability"
                     ]
                 },
                 "formula": {
@@ -80,17 +80,17 @@ const BUFF_SCHEMA = {
                     "trigger": {
                         "$comment": "The type of trigger",
                         "enum": [
-                            "TurnStart",
-                            "AllyTurnStart",
-                            "EnemyTurnStart",
-                            "SelfTurnStart",
-                            "TurnEnd",
-                            "AllyTurnEnd",
-                            "EnemyTurnEnd",
-                            "SelfTurnEnd",
+                            "Turn_Start",
+                            "Ally_Turn_Start",
+                            "Enemy_Turn_Start",
+                            "Self_Turn_Start",
+                            "Turn_End",
+                            "Ally_Turn_End",
+                            "Enemy_Turn_End",
+                            "Self_Turn_End",
 
-                            "AbilityFinished",
-                            "SelfAbilityFinished"
+                            "Ability_Finished",
+                            "Self_Ability_Finished"
                         ]
                     },
                     "behaviours": {
@@ -159,10 +159,10 @@ const BEHAVIOUR_SCHEMA = {
                         "enum": [
                             "Damage",
                             "Buff",
-                            "ActionPoints",
+                            "Action_Points",
                             "Heal",
                             "Log",
-                            "ModifyBuffs",
+                            "Modify_Buffs",
                         ]
                     },
                     "amount": {

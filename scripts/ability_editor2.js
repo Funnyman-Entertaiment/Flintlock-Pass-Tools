@@ -124,10 +124,10 @@ const BEHAVIOUR_SCHEMA = {
                         "enum": [
                             "Damage",
                             "Buff",
-                            "ActionPoints",
+                            "Action_Points",
                             "Heal",
                             "Log",
-                            "ModifyBuffs"
+                            "Modify_Buffs"
                         ]
                     },
                     "amount": {
